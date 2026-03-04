@@ -1,0 +1,890 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ====================================================
+     ENGINEER BLOGGER TEMPLATE - CONFIGURATION
+     ====================================================
+     Find and replace these values with your own:
+
+     AUTHOR_NAME     : Alex Chen
+     AUTHOR_PHOTO    : https://via.placeholder.com/150/21262d/a78bfa?text=Photo
+     PORTFOLIO_URL   : https://yourportfolio.com
+     GITHUB_URL      : https://github.com/yourusername
+     LINKEDIN_URL    : https://www.linkedin.com/in/yourprofile/
+     EMAIL           : your.email@example.com
+     UNIVERSITY      : Your University
+     HERO_TITLE      : Your Engineering Blog
+
+     Required Blogger Labels for nav filtering:
+       Electronics, Embedded-Systems, Computer-Science,
+       IoT-Security, Blog
+
+     Create Blogger Pages titled exactly:
+       "About" and "Contact"
+     ==================================================== -->
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<meta content='width=device-width,initial-scale=1,minimum-scale=1' name='viewport'/>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'/>
+<meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'/>
+<b:include data='blog' name='all-head-content'/>
+
+<b:if cond='data:blog.url == data:blog.homepageUrl'><title><data:blog.title/></title></b:if>
+<b:if cond='data:blog.pageType == &quot;item&quot;'><title><data:blog.pageName/> &#8211; <data:blog.title/></title></b:if>
+<b:if cond='data:blog.pageType == &quot;static_page&quot;'><title><data:blog.pageName/> &#8211; <data:blog.title/></title></b:if>
+<b:if cond='data:blog.pageType == &quot;index&quot;'><b:if cond='data:blog.url != data:blog.homepageUrl'><title><data:blog.pageTitle/> &#8211; <data:blog.title/></title></b:if></b:if>
+<b:if cond='data:blog.metaDescription'><meta expr:content='data:blog.metaDescription' name='description'/></b:if>
+
+&lt;style type=&quot;text/css&quot;&gt;&lt;!-- /*
+<b:skin><![CDATA[
+body#layout div.section{background:transparent;margin:0 0 10px;padding:0;border:none;}
+body#layout .section h4{display:none;}
+body#layout #outer-wrapper{width:900px;background:transparent;}
+]]></b:skin>
+
+<link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap' rel='stylesheet'/>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css' rel='stylesheet'/>
+
+<style type='text/css'>
+/*<![CDATA[*/
+:root{
+  --bg:#0d1117;--bg2:#161b22;--bg3:#21262d;--bg4:#30363d;
+  --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.13);
+  --text:#c9d1d9;--text2:#8b949e;--text3:#6e7681;
+  --accent:#7c6af7;--accent2:#a78bfa;--accent3:#c4b5fd;
+  --green:#3fb950;--green2:#56d364;
+  --head:#e6edf3;
+  --radius:10px;--radius-sm:6px;
+  --shadow:0 8px 24px rgba(0,0,0,.4);
+  --font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:15px;}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;transition:color .2s;}
+img{max-width:100%;display:block;}
+ul{list-style:none;}
+h1,h2,h3,h4,h5,h6{color:var(--head);font-weight:600;line-height:1.3;}
+
+/* ── NAVBAR ── */
+#eb-navbar{position:fixed;top:0;left:0;right:0;z-index:9999;height:58px;
+  background:rgba(13,17,23,.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;}
+.eb-nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1280px;margin:0 auto;}
+.eb-logo{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:15px;font-weight:600;color:var(--head);white-space:nowrap;}
+.eb-logo i{color:var(--accent);font-size:16px;}
+.eb-logo span{color:var(--accent2);}
+.eb-nav-links{display:flex;align-items:center;gap:2px;}
+.eb-nav-links a{padding:5px 11px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;color:var(--text2);transition:all .2s;white-space:nowrap;}
+.eb-nav-links a:hover{color:var(--head);background:var(--bg3);}
+.eb-nav-links a.active{color:var(--accent2);background:rgba(124,106,247,.1);}
+.eb-nav-links a.eb-ext{color:var(--green);}
+.eb-nav-links a.eb-ext:hover{color:var(--green2);background:rgba(63,185,80,.08);}
+.eb-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:transparent;}
+.eb-hamburger span{display:block;width:22px;height:2px;background:var(--text2);border-radius:2px;transition:all .3s;}
+.eb-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.eb-hamburger.open span:nth-child(2){opacity:0;}
+.eb-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.eb-mobile-menu{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(13,17,23,.98);border-bottom:1px solid var(--border);padding:16px 24px;z-index:9998;flex-direction:column;gap:4px;}
+.eb-mobile-menu.open{display:flex;}
+.eb-mobile-menu a{padding:10px 14px;border-radius:var(--radius-sm);font-size:14px;color:var(--text2);transition:all .2s;}
+.eb-mobile-menu a:hover{color:var(--head);background:var(--bg3);}
+
+/* ── LAYOUT ── */
+#eb-wrapper{padding-top:58px;min-height:100vh;}
+#eb-main{max-width:1280px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:start;}
+#outer-wrapper{width:100%;}
+#post-wrapper{width:100%;}
+
+/* ── SOCIAL RAIL ── */
+.eb-social-rail{position:fixed;left:16px;bottom:0;z-index:100;display:flex;flex-direction:column;align-items:center;gap:14px;padding-bottom:24px;}
+.eb-social-rail::after{content:'';width:1px;height:72px;background:var(--border2);margin-top:6px;display:block;}
+.eb-social-rail a{color:var(--text3);transition:all .2s;line-height:0;}
+.eb-social-rail a:hover{color:var(--accent2);transform:translateY(-2px);}
+.eb-social-rail i{font-size:17px;}
+
+/* ── PAGE HERO ── */
+.eb-hero{margin-bottom:36px;}
+.eb-hero h1{font-size:28px;font-weight:700;color:var(--head);letter-spacing:-.02em;margin-bottom:6px;}
+.eb-hero h1 .slash{color:var(--accent);}
+.eb-hero p{font-size:13px;color:var(--text3);font-style:italic;}
+
+/* ── SECTION TITLE ── */
+.eb-section-title{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--text);margin:40px 0 20px;display:flex;align-items:center;gap:8px;}
+.eb-section-title::before{content:'#';color:var(--accent);}
+.eb-section-title::after{content:'';flex:1;height:1px;background:var(--border);margin-left:12px;}
+
+/* ── PROJECT CARDS ── */
+.eb-cards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px;}
+.eb-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s,box-shadow .25s;}
+.eb-card:hover{transform:translateY(-4px);border-color:rgba(124,106,247,.35);box-shadow:var(--shadow);}
+.eb-card-img{width:100%;height:160px;overflow:hidden;position:relative;}
+.eb-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.eb-card:hover .eb-card-img img{transform:scale(1.05);}
+.eb-card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg,var(--bg3),var(--bg4));}
+.eb-card-body{padding:14px 16px 16px;flex:1;display:flex;flex-direction:column;}
+.eb-card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.eb-tag{font-size:10px;font-family:var(--mono);color:var(--text3);background:var(--bg3);padding:2px 7px;border-radius:3px;border:1px solid var(--border);}
+.eb-tag.electronics{border-color:rgba(63,185,80,.3);color:var(--green);}
+.eb-tag.embedded{border-color:rgba(124,106,247,.3);color:var(--accent2);}
+.eb-tag.cs{border-color:rgba(56,189,248,.3);color:#7dd3fc;}
+.eb-card-title{font-size:15px;font-weight:600;color:var(--head);margin-bottom:6px;line-height:1.35;}
+.eb-card-title a:hover{color:var(--accent2);}
+.eb-card-desc{font-size:12px;color:var(--text2);line-height:1.6;flex:1;margin-bottom:14px;}
+.eb-card-actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;}
+.eb-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:var(--radius-sm);font-size:11px;font-weight:600;border:1px solid transparent;transition:all .2s;cursor:pointer;}
+.eb-btn i{font-size:10px;}
+.eb-btn-read{background:rgba(124,106,247,.1);border-color:rgba(124,106,247,.28);color:var(--accent2);}
+.eb-btn-read:hover{background:rgba(124,106,247,.22);border-color:var(--accent);}
+.eb-btn-gh{background:var(--bg3);border-color:var(--border2);color:var(--text2);}
+.eb-btn-gh:hover{border-color:var(--border2);color:var(--head);background:var(--bg4);}
+.eb-btn-live{background:rgba(63,185,80,.08);border-color:rgba(63,185,80,.25);color:var(--green);}
+.eb-btn-live:hover{background:rgba(63,185,80,.16);}
+
+/* ── BLOG POST LIST ── */
+.eb-posts-list{display:flex;flex-direction:column;gap:18px;}
+.eb-post-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:200px 1fr;transition:border-color .25s,box-shadow .25s;}
+.eb-post-card:hover{border-color:rgba(124,106,247,.3);box-shadow:var(--shadow);}
+.eb-post-thumb{height:100%;min-height:140px;overflow:hidden;}
+.eb-post-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.eb-post-card:hover .eb-post-thumb img{transform:scale(1.04);}
+.eb-post-thumb-placeholder{width:100%;height:100%;min-height:140px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:28px;}
+.eb-post-info{padding:16px 18px;display:flex;flex-direction:column;}
+.eb-post-cat{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-family:var(--mono);font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:2px 8px;border-radius:3px;margin-bottom:9px;width:fit-content;}
+.eb-post-cat.electronics{background:rgba(63,185,80,.1);color:var(--green);border:1px solid rgba(63,185,80,.2);}
+.eb-post-cat.embedded{background:rgba(124,106,247,.1);color:var(--accent2);border:1px solid rgba(124,106,247,.2);}
+.eb-post-cat.cs{background:rgba(56,189,248,.1);color:#7dd3fc;border:1px solid rgba(56,189,248,.2);}
+.eb-post-cat.general{background:var(--bg3);color:var(--text2);border:1px solid var(--border);}
+.eb-post-title{font-size:15px;font-weight:600;color:var(--head);margin-bottom:6px;line-height:1.4;}
+.eb-post-title a:hover{color:var(--accent2);}
+.eb-post-meta{font-size:11px;color:var(--text3);margin-bottom:8px;font-family:var(--mono);}
+.eb-post-snippet{font-size:12px;color:var(--text2);line-height:1.6;flex:1;margin-bottom:10px;}
+.eb-read-more{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--accent);font-weight:500;margin-top:auto;}
+.eb-read-more:hover{color:var(--accent2);}
+.eb-read-more i{font-size:11px;}
+
+/* ── SINGLE POST ── */
+.eb-single{max-width:800px;}
+.eb-single-hero{margin-bottom:28px;}
+.eb-single-cat-bar{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.eb-single-title{font-size:26px;font-weight:700;color:var(--head);margin-bottom:12px;line-height:1.3;}
+.eb-single-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--text3);font-family:var(--mono);padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:24px;}
+.eb-single-meta i{margin-right:4px;}
+.eb-featured-img{width:100%;border-radius:var(--radius);overflow:hidden;margin-bottom:28px;border:1px solid var(--border);}
+.eb-featured-img img{width:100%;height:auto;max-height:420px;object-fit:cover;}
+/* Post body */
+.eb-post-body{color:var(--text);font-size:15px;line-height:1.8;}
+.eb-post-body h1,.eb-post-body h2,.eb-post-body h3,.eb-post-body h4{color:var(--head);margin:1.8em 0 .7em;font-weight:600;}
+.eb-post-body h2{font-size:20px;border-bottom:1px solid var(--border);padding-bottom:6px;}
+.eb-post-body h3{font-size:17px;}
+.eb-post-body p{margin-bottom:1.2em;}
+.eb-post-body a{color:var(--accent);border-bottom:1px solid rgba(124,106,247,.3);}
+.eb-post-body a:hover{color:var(--accent2);border-color:var(--accent2);}
+.eb-post-body img{border-radius:var(--radius-sm);margin:1.2em 0;border:1px solid var(--border);}
+.eb-post-body blockquote{border-left:3px solid var(--accent);background:var(--bg2);border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:12px 16px;margin:1.5em 0;color:var(--text2);}
+.eb-post-body ul,.eb-post-body ol{margin:1em 0 1em 1.5em;}
+.eb-post-body li{margin-bottom:.4em;}
+.eb-post-body table{width:100%;border-collapse:collapse;margin:1.5em 0;font-size:13px;}
+.eb-post-body th,.eb-post-body td{border:1px solid var(--border2);padding:8px 12px;text-align:left;}
+.eb-post-body th{background:var(--bg3);color:var(--head);font-weight:600;}
+.eb-post-body tr:nth-child(even) td{background:rgba(255,255,255,.02);}
+/* Code blocks */
+.eb-post-body pre{background:#0d1117;border:1px solid var(--border2);border-radius:var(--radius-sm);padding:16px;overflow-x:auto;margin:1.5em 0;position:relative;}
+.eb-post-body pre code{font-family:var(--mono);font-size:13px;color:#e6edf3;line-height:1.7;}
+.eb-post-body code{font-family:var(--mono);font-size:13px;background:rgba(110,118,129,.15);color:#79dcea;padding:2px 6px;border-radius:4px;}
+.eb-post-body pre code{background:transparent;color:inherit;padding:0;}
+/* Copy button */
+.eb-copy-btn{position:absolute;top:10px;right:10px;padding:3px 10px;font-size:10px;font-family:var(--mono);background:var(--bg3);border:1px solid var(--border2);border-radius:4px;color:var(--text2);cursor:pointer;transition:all .2s;}
+.eb-copy-btn:hover{background:var(--bg4);color:var(--head);}
+/* Tags in post */
+.eb-post-tags{margin-top:24px;padding-top:16px;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+.eb-post-tags span{font-size:12px;color:var(--text3);font-family:var(--mono);}
+.eb-post-tags a{background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-size:11px;padding:3px 9px;border-radius:4px;font-family:var(--mono);transition:all .2s;}
+.eb-post-tags a:hover{border-color:rgba(124,106,247,.4);color:var(--accent2);}
+/* Share / navigation */
+.eb-post-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:32px;}
+.eb-post-nav a{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px;font-size:12px;color:var(--text2);transition:all .2s;}
+.eb-post-nav a:hover{border-color:rgba(124,106,247,.3);color:var(--head);}
+.eb-post-nav .next{text-align:right;}
+.eb-post-nav small{display:block;font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:3px;}
+
+/* ── SIDEBAR ── */
+#eb-sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:74px;}
+.eb-sidebar-widget{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:18px;}
+.eb-sidebar-title{font-family:var(--mono);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-bottom:14px;display:flex;align-items:center;gap:7px;}
+.eb-sidebar-title i{color:var(--accent);}
+/* Author card */
+.eb-author-card{text-align:center;}
+.eb-author-avatar{width:72px;height:72px;border-radius:50%;border:2px solid rgba(124,106,247,.4);margin:0 auto 12px;overflow:hidden;background:var(--bg3);}
+.eb-author-avatar img{width:100%;height:100%;object-fit:cover;}
+.eb-author-avatar i{font-size:32px;color:var(--text3);line-height:72px;}
+.eb-author-name{font-size:15px;font-weight:600;color:var(--head);margin-bottom:4px;}
+.eb-author-role{font-size:11px;font-family:var(--mono);color:var(--accent2);margin-bottom:10px;}
+.eb-author-bio{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px;}
+.eb-author-socials{display:flex;justify-content:center;gap:10px;}
+.eb-author-socials a{width:32px;height:32px;border-radius:6px;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:13px;transition:all .2s;}
+.eb-author-socials a:hover{border-color:rgba(124,106,247,.4);color:var(--accent2);}
+/* Category list */
+.eb-cat-list{display:flex;flex-direction:column;gap:7px;}
+.eb-cat-item{display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:var(--radius-sm);background:var(--bg3);border:1px solid var(--border);transition:all .2s;}
+.eb-cat-item:hover{border-color:rgba(124,106,247,.3);}
+.eb-cat-item a{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:7px;flex:1;}
+.eb-cat-item a i{font-size:11px;}
+.eb-cat-item a:hover{color:var(--accent2);}
+.eb-cat-item .count{font-size:10px;font-family:var(--mono);color:var(--text3);background:var(--bg4);padding:1px 6px;border-radius:3px;}
+/* Popular/Recent posts in sidebar */
+.eb-sidebar-posts{display:flex;flex-direction:column;gap:12px;}
+.eb-sidebar-post{display:flex;gap:10px;align-items:flex-start;}
+.eb-sidebar-post-thumb{width:52px;height:52px;border-radius:6px;overflow:hidden;flex-shrink:0;background:var(--bg3);}
+.eb-sidebar-post-thumb img{width:100%;height:100%;object-fit:cover;}
+.eb-sidebar-post-title{font-size:12px;color:var(--text);line-height:1.4;margin-bottom:3px;}
+.eb-sidebar-post-title a:hover{color:var(--accent2);}
+.eb-sidebar-post-date{font-size:10px;color:var(--text3);font-family:var(--mono);}
+/* Label cloud */
+.eb-label-cloud{display:flex;flex-wrap:wrap;gap:6px;}
+.eb-label-cloud a{font-size:11px;font-family:var(--mono);padding:3px 8px;border-radius:4px;background:var(--bg3);border:1px solid var(--border);color:var(--text2);transition:all .2s;}
+.eb-label-cloud a:hover{border-color:rgba(124,106,247,.35);color:var(--accent2);background:rgba(124,106,247,.07);}
+
+/* ── PAGINATION ── */
+.eb-pagination{display:flex;justify-content:center;gap:8px;margin:32px 0 0;}
+.eb-pagination a,.eb-pagination span{padding:6px 14px;border-radius:var(--radius-sm);font-size:13px;font-weight:500;background:var(--bg2);border:1px solid var(--border);color:var(--text2);transition:all .2s;}
+.eb-pagination a:hover{border-color:rgba(124,106,247,.35);color:var(--accent2);}
+.eb-pagination .current{background:rgba(124,106,247,.12);border-color:rgba(124,106,247,.35);color:var(--accent2);}
+
+/* ── COMMENTS ── */
+.eb-comments{margin-top:36px;padding-top:28px;border-top:1px solid var(--border);}
+.eb-comments h3{font-size:15px;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:8px;}
+.eb-comments h3 i{color:var(--accent);font-size:14px;}
+
+/* ── BREADCRUMB ── */
+.eb-breadcrumb{font-size:12px;color:var(--text3);margin-bottom:20px;font-family:var(--mono);display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.eb-breadcrumb a{color:var(--accent);}
+.eb-breadcrumb a:hover{color:var(--accent2);}
+.eb-breadcrumb i{font-size:9px;}
+
+/* ── FOOTER ── */
+#eb-footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24px 24px;}
+.eb-footer-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;}
+.eb-footer-brand{display:flex;flex-direction:column;gap:10px;}
+.eb-footer-logo{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:15px;font-weight:600;color:var(--head);}
+.eb-footer-logo i{color:var(--accent);}
+.eb-footer-desc{font-size:12px;color:var(--text2);line-height:1.7;max-width:260px;}
+.eb-footer-social{display:flex;gap:8px;margin-top:4px;}
+.eb-footer-social a{width:34px;height:34px;border-radius:var(--radius-sm);background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:14px;transition:all .2s;}
+.eb-footer-social a:hover{border-color:rgba(124,106,247,.4);color:var(--accent2);}
+.eb-footer-col h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:14px;font-family:var(--mono);}
+.eb-footer-col ul{display:flex;flex-direction:column;gap:8px;}
+.eb-footer-col li a{font-size:13px;color:var(--text2);transition:color .2s;}
+.eb-footer-col li a:hover{color:var(--accent2);}
+.eb-footer-bottom{max-width:1280px;margin:28px auto 0;padding-top:16px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+.eb-footer-bottom p{font-size:12px;color:var(--text3);}
+.eb-footer-bottom a{color:var(--accent2);}
+
+/* ── BACK TO TOP ── */
+#eb-back-top{position:fixed;bottom:28px;right:28px;width:40px;height:40px;background:rgba(124,106,247,.12);border:1px solid rgba(124,106,247,.3);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s;color:var(--accent2);z-index:500;font-size:15px;}
+#eb-back-top.show{opacity:1;visibility:visible;}
+#eb-back-top:hover{background:rgba(124,106,247,.26);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){#eb-main{grid-template-columns:1fr;}.eb-social-rail{display:none;}#eb-sidebar{position:static;top:auto;}}
+@media(max-width:860px){.eb-hamburger{display:flex;}.eb-nav-links{display:none;}.eb-post-card{grid-template-columns:1fr;}}
+@media(max-width:640px){.eb-cards-grid{grid-template-columns:1fr;}#eb-main{padding:24px 14px 60px;}.eb-footer-inner{grid-template-columns:1fr;gap:24px;}.eb-post-nav{grid-template-columns:1fr;}}
+
+/* ── FULL STANDALONE PAGES (About / Contact) ── */
+.eb-fullpage{max-width:700px;margin:0 auto;padding:48px 0 80px;}
+.eb-fullpage-header{text-align:center;margin-bottom:44px;}
+.eb-fullpage-avatar{width:96px;height:96px;border-radius:50%;border:3px solid rgba(124,106,247,.4);margin:0 auto 18px;overflow:hidden;box-shadow:0 0 24px rgba(124,106,247,.2);}
+.eb-fullpage-avatar img{width:100%;height:100%;object-fit:cover;}
+.eb-fullpage-header h1{font-size:30px;font-weight:700;color:var(--head);margin-bottom:6px;}
+.eb-fullpage-header p{font-size:13px;color:var(--text3);font-family:var(--mono);}
+.eb-fullpage-section{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px 32px;margin-bottom:20px;}
+.eb-fullpage-section h2{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);font-family:var(--mono);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.eb-fullpage-section h2 i{color:var(--accent);}
+.eb-fullpage-section p{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:12px;}
+.eb-fullpage-section p:last-child{margin-bottom:0;}
+.eb-fullpage-interests{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0;}
+.eb-fullpage-interests li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--text2);line-height:1.5;}
+.eb-fullpage-interests li::before{content:'▸';color:var(--accent);flex-shrink:0;margin-top:1px;}
+.eb-fullpage-links{display:flex;flex-direction:column;gap:10px;}
+.eb-fullpage-link{display:flex;align-items:center;gap:14px;padding:12px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);transition:all .2s;}
+.eb-fullpage-link:hover{border-color:rgba(124,106,247,.35);background:rgba(124,106,247,.06);}
+.eb-fullpage-link-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.eb-fullpage-link-icon.gh{background:rgba(255,255,255,.06);color:var(--head);}
+.eb-fullpage-link-icon.li{background:rgba(10,102,194,.15);color:#60a5fa;}
+.eb-fullpage-link-icon.em{background:rgba(124,106,247,.12);color:var(--accent2);}
+.eb-fullpage-link-text{display:flex;flex-direction:column;gap:2px;}
+.eb-fullpage-link-text strong{font-size:13px;font-weight:600;color:var(--head);}
+.eb-fullpage-link-text span{font-size:11px;color:var(--text3);font-family:var(--mono);}
+.eb-contact-intro{text-align:center;padding:32px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;}
+.eb-contact-intro i{font-size:36px;color:var(--accent);margin-bottom:14px;display:block;}
+.eb-contact-intro p{font-size:14px;color:var(--text2);line-height:1.8;max-width:500px;margin:0 auto;}
+@media(max-width:640px){.eb-fullpage{padding:32px 0 60px;}.eb-fullpage-section{padding:20px 18px;}}
+/*]]>*/
+</style>
+</head>
+
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav id='eb-navbar'>
+  <div class='eb-nav-inner'>
+    <a class='eb-logo' expr:href='data:blog.homepageUrl'>
+      <i class='fa-solid fa-microchip'/>
+      <data:blog.title/>
+    </a>
+    <div class='eb-nav-links'>
+      <a expr:href='data:blog.homepageUrl'>Home</a>
+      <a class='eb-ext' href='https://yourportfolio.com' rel='nofollow' target='_blank'>Portfolio &#8599;</a>
+      <a expr:href='data:blog.homepageUrl + &quot;search/label/Electronics&quot;'>Electronics</a>
+      <a expr:href='data:blog.homepageUrl + &quot;search/label/Embedded-Systems&quot;'>Embedded Systems</a>
+      <a expr:href='data:blog.homepageUrl + &quot;search/label/Computer-Science&quot;'>CS Projects</a>
+      <a expr:href='data:blog.homepageUrl + &quot;search/label/IoT-Security&quot;'>IoT &amp; Security</a>
+      <a expr:href='data:blog.homepageUrl + &quot;search/label/Blog&quot;'>Blog</a>
+      <a href='/p/about.html'>About</a>
+      <a href='/p/contact.html'>Contact</a>
+    </div>
+    <button aria-label='Menu' class='eb-hamburger' id='eb-ham' onclick='ebToggleMenu()'>
+      <span/><span/><span/>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class='eb-mobile-menu' id='eb-mobile-menu'>
+  <a expr:href='data:blog.homepageUrl'><i class='fa-solid fa-house'/> Home</a>
+  <a class='eb-ext' href='https://yourportfolio.com' rel='nofollow' target='_blank'><i class='fa-solid fa-arrow-up-right-from-square'/> Portfolio</a>
+  <a expr:href='data:blog.homepageUrl + &quot;search/label/Electronics&quot;'><i class='fa-solid fa-plug-circle-bolt'/> Electronics Projects</a>
+  <a expr:href='data:blog.homepageUrl + &quot;search/label/Embedded-Systems&quot;'><i class='fa-solid fa-microchip'/> Embedded Systems</a>
+  <a expr:href='data:blog.homepageUrl + &quot;search/label/Computer-Science&quot;'><i class='fa-solid fa-code'/> CS Projects</a>
+  <a expr:href='data:blog.homepageUrl + &quot;search/label/IoT-Security&quot;'><i class='fa-solid fa-shield-halved'/> IoT &amp; Security</a>
+  <a expr:href='data:blog.homepageUrl + &quot;search/label/Blog&quot;'><i class='fa-solid fa-rss'/> Blog</a>
+  <a href='/p/about.html'><i class='fa-solid fa-user'/> About</a>
+  <a href='/p/contact.html'><i class='fa-solid fa-envelope'/> Contact</a>
+</div>
+
+<!-- Left social rail (desktop) -->
+<div class='eb-social-rail'>
+  <a href='https://github.com/yourusername' rel='nofollow' target='_blank' title='GitHub'><i class='fa-brands fa-github'/></a>
+  <a href='https://www.linkedin.com/in/yourprofile/' rel='nofollow' target='_blank' title='LinkedIn'><i class='fa-brands fa-linkedin'/></a>
+  <a href='mailto:your.email@example.com' title='Email'><i class='fa-solid fa-envelope'/></a>
+</div>
+
+<!-- ═══ PAGE WRAPPER ═══ -->
+<div id='eb-wrapper'>
+  <div id='eb-main'>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main id='post-wrapper'>
+      <div id='outer-wrapper'>
+        <b:section class='main' id='main' showaddelement='no'>
+          <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='1' visible='true'>
+
+            <!-- ══ MAIN INCLUDABLE ══ -->
+            <b:includable id='main' var='top'>
+
+              <!-- HOME / INDEX -->
+              <b:if cond='data:blog.pageType == &quot;index&quot;'>
+                <div class='eb-hero'>
+                  <h1><span class='slash'>/</span> Your Engineering Blog</h1>
+                  <p>Documenting electronics projects, embedded systems development, IoT security experiments, and computer science research.</p>
+                </div>
+                <div class='eb-posts-list'>
+                  <b:loop values='data:posts' var='post'>
+                    <b:include data='post' name='post'/>
+                  </b:loop>
+                </div>
+                <b:include name='nextprev'/>
+              </b:if>
+
+              <!-- SINGLE POST -->
+              <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                <div class='eb-single'>
+                  <b:loop values='data:posts' var='post'>
+                    <b:include data='post' name='post'/>
+                    <b:include data='post' name='comment_picker'/>
+                  </b:loop>
+                </div>
+              </b:if>
+
+              <!-- STATIC PAGE -->
+              <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+                <div class='eb-single'>
+                  <b:loop values='data:posts' var='post'>
+                    <b:include data='post' name='post'/>
+                  </b:loop>
+                </div>
+              </b:if>
+
+            </b:includable>
+
+            <!-- ══ POST TEMPLATE ══ -->
+            <b:includable id='post' var='post'>
+
+              <!-- INDEX CARD -->
+              <b:if cond='data:blog.pageType == &quot;index&quot;'>
+                <article class='eb-post-card'>
+                  <b:if cond='data:post.thumbnailUrl'>
+                    <a class='eb-post-thumb' expr:href='data:post.url'>
+                      <img expr:alt='data:post.title' expr:src='data:post.thumbnailUrl'/>
+                    </a>
+                    <b:else/>
+                    <div class='eb-post-thumb'>
+                      <div class='eb-post-thumb-placeholder'>&#128736;</div>
+                    </div>
+                  </b:if>
+                  <div class='eb-post-info'>
+                    <b:if cond='data:post.labels'>
+                      <b:loop values='data:post.labels' var='label'>
+                        <b:if cond='data:label.isFirst'>
+                          <span class='eb-post-cat general'>
+                            <i class='fa-solid fa-tag'/>
+                            <data:label.name/>
+                          </span>
+                        </b:if>
+                      </b:loop>
+                    </b:if>
+                    <h2 class='eb-post-title'>
+                      <a expr:href='data:post.url'><data:post.title/></a>
+                    </h2>
+                    <div class='eb-post-meta'>
+                      <i class='fa-regular fa-calendar'/>&#160;<data:post.timestamp/>
+                      <b:if cond='data:post.author'>&#160;&#183;&#160;<i class='fa-regular fa-user'/>&#160;<data:post.author/></b:if>
+                    </div>
+                    <p class='eb-post-snippet'><data:post.snippet/></p>
+                    <a class='eb-read-more' expr:href='data:post.url'>
+                      Read article <i class='fa-solid fa-arrow-right'/>
+                    </a>
+                  </div>
+                </article>
+              </b:if>
+
+              <!-- SINGLE POST VIEW -->
+              <b:if cond='data:blog.pageType == &quot;item&quot;'>
+                <!-- Breadcrumb -->
+                <div class='eb-breadcrumb'>
+                  <a expr:href='data:blog.homepageUrl'><i class='fa-solid fa-house'/>&#160;Home</a>
+                  <i class='fa-solid fa-chevron-right'/>
+                  <b:if cond='data:post.labels'>
+                    <b:loop values='data:post.labels' var='label'>
+                      <b:if cond='data:label.isFirst'>
+                        <a expr:href='data:label.url'><data:label.name/></a>
+                        <i class='fa-solid fa-chevron-right'/>
+                      </b:if>
+                    </b:loop>
+                  </b:if>
+                  <span><data:post.title/></span>
+                </div>
+                <!-- Category + tags -->
+                <div class='eb-single-cat-bar'>
+                  <b:if cond='data:post.labels'>
+                    <b:loop values='data:post.labels' var='label'>
+                      <b:if cond='data:label.isFirst'>
+                        <span class='eb-post-cat general'><data:label.name/></span>
+                      </b:if>
+                    </b:loop>
+                  </b:if>
+                </div>
+                <h1 class='eb-single-title'><data:post.title/></h1>
+                <div class='eb-single-meta'>
+                  <span><i class='fa-regular fa-calendar'/> <data:post.timestamp/></span>
+                  <b:if cond='data:post.author'><span><i class='fa-regular fa-user'/> <data:post.author/></span></b:if>
+                  <b:if cond='data:post.allowComments'>
+                    <span><i class='fa-regular fa-comment'/> <data:post.numComments/> comments</span>
+                  </b:if>
+                </div>
+                <!-- Featured image -->
+                <b:if cond='data:post.firstImageUrl'>
+                  <div class='eb-featured-img'>
+                    <img expr:alt='data:post.title' expr:src='data:post.firstImageUrl'/>
+                  </div>
+                </b:if>
+                <!-- Body -->
+                <div class='eb-post-body' expr:id='&quot;post-body-&quot; + data:post.id'>
+                  <data:post.body/>
+                </div>
+                <!-- Post tags -->
+                <b:if cond='data:post.labels'>
+                  <div class='eb-post-tags'>
+                    <span><i class='fa-solid fa-tags'/>&#160;</span>
+                    <b:loop values='data:post.labels' var='label'>
+                      <a expr:href='data:label.url'><data:label.name/></a>
+                    </b:loop>
+                  </div>
+                </b:if>
+              </b:if>
+
+              <!-- STATIC PAGE VIEW (About / Contact / Other) -->
+              <b:if cond='data:blog.pageType == &quot;static_page&quot;'>
+
+                <!-- ═ ABOUT PAGE ═ -->
+                <b:if cond='data:blog.pageName == &quot;About&quot;'>
+                  <div class='eb-fullpage'>
+                    <div class='eb-fullpage-header'>
+                      <div class='eb-fullpage-avatar'>
+                        <img alt='Your Name' src='https://via.placeholder.com/150/21262d/a78bfa?text=Photo'/>
+                      </div>
+                      <h1>About Me</h1>
+                      <p>Electronics &amp; Computer Science Student &#183; Your University</p>
+                    </div>
+
+                    <div class='eb-fullpage-section'>
+                      <h2><i class='fa-solid fa-user'/> Hello, I&#39;m Alex</h2>
+                      <p>I am an Electronics and Computer Science student at the Your University with a strong interest in embedded systems, PCB design, and hardware&#8211;software integration.</p>
+                      <p>This blog is where I document my technical work including electronics projects, embedded system experiments, IoT security research, and computer science projects.</p>
+                    </div>
+
+                    <div class='eb-fullpage-section'>
+                      <h2><i class='fa-solid fa-microchip'/> Technical Interests</h2>
+                      <ul class='eb-fullpage-interests'>
+                        <li>Embedded systems development</li>
+                        <li>PCB design and circuit analysis</li>
+                        <li>Low-cost power monitoring systems</li>
+                        <li>IoT devices and security testing</li>
+                        <li>Computer science tools and programming</li>
+                      </ul>
+                    </div>
+
+                    <div class='eb-fullpage-section'>
+                      <h2><i class='fa-solid fa-book'/> About This Blog</h2>
+                      <p>This platform serves as a public engineering notebook where I document projects, experiments, research ideas, and lessons learned while building real systems.</p>
+                    </div>
+
+                    <div class='eb-fullpage-section'>
+                      <h2><i class='fa-solid fa-link'/> Links</h2>
+                      <div class='eb-fullpage-links'>
+                        <a class='eb-fullpage-link' href='https://github.com/yourusername' rel='nofollow' target='_blank'>
+                          <div class='eb-fullpage-link-icon gh'><i class='fa-brands fa-github'/></div>
+                          <div class='eb-fullpage-link-text'>
+                            <strong>GitHub</strong>
+                            <span>github.com/yourusername</span>
+                          </div>
+                        </a>
+                        <a class='eb-fullpage-link' href='https://www.linkedin.com/in/yourprofile/' rel='nofollow' target='_blank'>
+                          <div class='eb-fullpage-link-icon li'><i class='fa-brands fa-linkedin'/></div>
+                          <div class='eb-fullpage-link-text'>
+                            <strong>LinkedIn</strong>
+                            <span>linkedin.com/in/yourprofile</span>
+                          </div>
+                        </a>
+                        <a class='eb-fullpage-link' href='mailto:your.email@example.com'>
+                          <div class='eb-fullpage-link-icon em'><i class='fa-solid fa-envelope'/></div>
+                          <div class='eb-fullpage-link-text'>
+                            <strong>Email</strong>
+                            <span>your.email@example.com</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </b:if>
+
+                <!-- ═ CONTACT PAGE ═ -->
+                <b:if cond='data:blog.pageName == &quot;Contact&quot;'>
+                  <div class='eb-fullpage'>
+                    <div class='eb-fullpage-header'>
+                      <h1>Contact</h1>
+                      <p>Get in touch</p>
+                    </div>
+
+                    <div class='eb-contact-intro'>
+                      <i class='fa-regular fa-paper-plane'/>
+                      <p>If you would like to discuss technical ideas, collaboration opportunities, or project related topics, feel free to reach out.</p>
+                    </div>
+
+                    <div class='eb-fullpage-section'>
+                      <h2><i class='fa-solid fa-address-card'/> Contact Details</h2>
+                      <div class='eb-fullpage-links'>
+                        <a class='eb-fullpage-link' href='mailto:your.email@example.com'>
+                          <div class='eb-fullpage-link-icon em'><i class='fa-solid fa-envelope'/></div>
+                          <div class='eb-fullpage-link-text'>
+                            <strong>Email</strong>
+                            <span>your.email@example.com</span>
+                          </div>
+                        </a>
+                        <a class='eb-fullpage-link' href='https://github.com/yourusername' rel='nofollow' target='_blank'>
+                          <div class='eb-fullpage-link-icon gh'><i class='fa-brands fa-github'/></div>
+                          <div class='eb-fullpage-link-text'>
+                            <strong>GitHub</strong>
+                            <span>github.com/yourusername</span>
+                          </div>
+                        </a>
+                        <a class='eb-fullpage-link' href='https://www.linkedin.com/in/yourprofile/' rel='nofollow' target='_blank'>
+                          <div class='eb-fullpage-link-icon li'><i class='fa-brands fa-linkedin'/></div>
+                          <div class='eb-fullpage-link-text'>
+                            <strong>LinkedIn</strong>
+                            <span>linkedin.com/in/yourprofile</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </b:if>
+
+                <!-- ═ ANY OTHER STATIC PAGE ═ -->
+                <b:if cond='data:blog.pageName != &quot;About&quot; AND data:blog.pageName != &quot;Contact&quot;'>
+                  <h1 class='eb-single-title'><data:post.title/></h1>
+                  <div class='eb-post-body' expr:id='&quot;post-body-&quot; + data:post.id'>
+                    <data:post.body/>
+                  </div>
+                </b:if>
+
+              </b:if>
+
+            </b:includable>
+
+            <!-- PAGINATION -->
+            <b:includable id='nextprev'>
+              <div class='eb-pagination'>
+                <b:if cond='data:newerPageUrl'>
+                  <a expr:href='data:newerPageUrl'><i class='fa-solid fa-arrow-left'/> Newer</a>
+                </b:if>
+                <b:if cond='data:olderPageUrl'>
+                  <a expr:href='data:olderPageUrl'>Older <i class='fa-solid fa-arrow-right'/></a>
+                </b:if>
+              </div>
+            </b:includable>
+
+            <!-- COMMENTS -->
+            <b:includable id='comment_picker' var='post'>
+              <b:if cond='data:post.commentSource == 1'>
+                <b:include data='post' name='iframe_comments'/>
+              </b:if>
+            </b:includable>
+            <b:includable id='iframe_comments' var='post'>
+              <b:if cond='data:post.allowIframeComments'>
+                <div class='eb-comments'>
+                  <h3><i class='fa-regular fa-comments'/> Comments</h3>
+                  <div class='cmt_iframe_holder' expr:data-href='data:post.url.canonical' expr:data-viewtype='data:post.viewType'/>
+                  <script expr:src='data:post.iframeCommentSrc' type='text/javascript'/>
+                </div>
+              </b:if>
+            </b:includable>
+
+            <!-- REQUIRED STUBS -->
+            <b:includable id='status-message'/>
+            <b:includable id='feedLinks'/>
+            <b:includable id='feedLinksBody' var='links'/>
+            <b:includable id='mobile-main' var='top'/>
+            <b:includable id='mobile-nextprev'/>
+            <b:includable id='mobile-index-post' var='post'/>
+            <b:includable id='mobile-post' var='post'/>
+            <b:includable id='backlinkDeleteIcon' var='backlink'/>
+            <b:includable id='backlinks' var='post'/>
+            <b:includable id='breadcrumb' var='posts'/>
+            <b:includable id='comment-form' var='post'/>
+            <b:includable id='commentDeleteIcon' var='comment'/>
+            <b:includable id='comment_count_picker' var='post'/>
+            <b:includable id='comments' var='post'/>
+            <b:includable id='postQuickEdit' var='post'/>
+            <b:includable id='shareButtons' var='post'/>
+            <b:includable id='threaded-comment-form' var='post'/>
+            <b:includable id='threaded_comment_js' var='post'/>
+            <b:includable id='threaded_comments' var='post'/>
+
+          </b:widget>
+        </b:section>
+      </div>
+    </main>
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside id='eb-sidebar'>
+
+      <!-- Author Card -->
+      <div class='eb-sidebar-widget'>
+        <div class='eb-author-card'>
+          <div class='eb-author-avatar'>
+            <img src='https://via.placeholder.com/150/21262d/a78bfa?text=Photo' alt='Your Name'/>
+          </div>
+          <div class='eb-author-name'>Alex Chen</div>
+          <div class='eb-author-role'>Electronics &amp; Computer Science Student</div>
+          <div style='font-size:10px;font-family:var(--mono);color:var(--text3);margin-bottom:10px;'>Embedded Systems | PCB Design</div>
+          <p class='eb-author-bio'>Electronics and Computer Science student at the Your University, documenting embedded systems projects, electronics experiments, IoT security research, and computer science development work.</p>
+          <div class='eb-author-socials'>
+            <a href='https://github.com/yourusername' rel='nofollow' target='_blank' title='GitHub'><i class='fa-brands fa-github'/></a>
+            <a href='https://www.linkedin.com/in/yourprofile/' rel='nofollow' target='_blank' title='LinkedIn'><i class='fa-brands fa-linkedin'/></a>
+            <a href='mailto:your.email@example.com' title='Email'><i class='fa-solid fa-envelope'/></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categories -->
+      <div class='eb-sidebar-widget'>
+        <div class='eb-sidebar-title'><i class='fa-solid fa-layer-group'/> Categories</div>
+        <div class='eb-cat-list'>
+          <div class='eb-cat-item'>
+            <a expr:href='data:blog.homepageUrl + &quot;search/label/Electronics&quot;'>
+              <i class='fa-solid fa-plug-circle-bolt' style='color:#3fb950'/>
+              Electronics Projects
+            </a>
+          </div>
+          <div class='eb-cat-item'>
+            <a expr:href='data:blog.homepageUrl + &quot;search/label/Embedded-Systems&quot;'>
+              <i class='fa-solid fa-microchip' style='color:#a78bfa'/>
+              Embedded Systems
+            </a>
+          </div>
+          <div class='eb-cat-item'>
+            <a expr:href='data:blog.homepageUrl + &quot;search/label/Computer-Science&quot;'>
+              <i class='fa-solid fa-code' style='color:#7dd3fc'/>
+              Computer Science Projects
+            </a>
+          </div>
+          <div class='eb-cat-item'>
+            <a expr:href='data:blog.homepageUrl + &quot;search/label/IoT-Security&quot;'>
+              <i class='fa-solid fa-shield-halved' style='color:#f87171'/>
+              IoT &amp; Security
+            </a>
+          </div>
+          <div class='eb-cat-item'>
+            <a expr:href='data:blog.homepageUrl + &quot;search/label/Blog&quot;'>
+              <i class='fa-solid fa-rss'/>
+              Blog
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Popular Posts -->
+      <b:section class='sidebar' id='sidebar' showaddelement='yes'>
+        <b:widget id='PopularPosts1' locked='false' title='Popular Posts' type='PopularPosts' version='1' visible='true'>
+          <b:includable id='main'>
+            <div class='eb-sidebar-widget'>
+              <div class='eb-sidebar-title'><i class='fa-solid fa-fire'/> Popular Posts</div>
+              <div class='eb-sidebar-posts'>
+                <b:loop values='data:posts' var='post'>
+                  <div class='eb-sidebar-post'>
+                    <b:if cond='data:post.thumbnail'>
+                      <div class='eb-sidebar-post-thumb'>
+                        <img expr:alt='data:post.title' expr:src='resizeImage(data:post.thumbnail, 52, &quot;1:1&quot;)'/>
+                      </div>
+                    </b:if>
+                    <div>
+                      <div class='eb-sidebar-post-title'>
+                        <a expr:href='data:post.href'><data:post.title/></a>
+                      </div>
+                    </div>
+                  </div>
+                </b:loop>
+              </div>
+            </div>
+          </b:includable>
+        </b:widget>
+
+        <!-- Labels -->
+        <b:widget id='Label1' locked='false' title='Labels' type='Label' visible='true'>
+          <b:includable id='main'>
+            <div class='eb-sidebar-widget'>
+              <div class='eb-sidebar-title'><i class='fa-solid fa-tags'/> Tags</div>
+              <div class='eb-label-cloud'>
+                <b:loop values='data:labels' var='label'>
+                  <a expr:href='data:label.url'><data:label.name/></a>
+                </b:loop>
+              </div>
+            </div>
+          </b:includable>
+        </b:widget>
+
+      </b:section>
+
+    </aside>
+
+  </div><!-- /#eb-main -->
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer id='eb-footer'>
+    <div class='eb-footer-inner'>
+      <div class='eb-footer-brand'>
+        <div class='eb-footer-logo'>
+          <i class='fa-solid fa-microchip'/>
+          <data:blog.title/>
+        </div>
+        <p class='eb-footer-desc'>Electronics &amp; Computer Science student at the Your University. Documenting embedded systems, PCB design, IoT security, and CS projects.</p>
+        <div class='eb-footer-social'>
+          <a href='https://github.com/yourusername' rel='nofollow' target='_blank' title='GitHub'><i class='fa-brands fa-github'/></a>
+          <a href='https://www.linkedin.com/in/yourprofile/' rel='nofollow' target='_blank' title='LinkedIn'><i class='fa-brands fa-linkedin'/></a>
+          <a href='mailto:your.email@example.com' title='Email'><i class='fa-solid fa-envelope'/></a>
+        </div>
+      </div>
+      <div class='eb-footer-col'>
+        <h4>Navigation</h4>
+        <ul>
+          <li><a expr:href='data:blog.homepageUrl'>Home</a></li>
+          <li><a href='/p/about.html'>About</a></li>
+          <li><a href='/p/contact.html'>Contact</a></li>
+          <li><a href='https://yourportfolio.com' rel='nofollow' target='_blank'>Portfolio &#8599;</a></li>
+        </ul>
+      </div>
+      <div class='eb-footer-col'>
+        <h4>Categories</h4>
+        <ul>
+          <li><a expr:href='data:blog.homepageUrl + &quot;search/label/Electronics&quot;'>Electronics Projects</a></li>
+          <li><a expr:href='data:blog.homepageUrl + &quot;search/label/Embedded-Systems&quot;'>Embedded Systems</a></li>
+          <li><a expr:href='data:blog.homepageUrl + &quot;search/label/Computer-Science&quot;'>Computer Science</a></li>
+          <li><a expr:href='data:blog.homepageUrl + &quot;search/label/IoT-Security&quot;'>IoT &amp; Security</a></li>
+          <li><a expr:href='data:blog.homepageUrl + &quot;search/label/Blog&quot;'>Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class='eb-footer-bottom'>
+      <p>&#169; 2025 <a expr:href='data:blog.homepageUrl'>Alex Chen</a>. All rights reserved.</p>
+      <p>Electronics &amp; CS Student | Your University</p>
+    </div>
+  </footer>
+
+</div><!-- /#eb-wrapper -->
+
+<!-- Back to top -->
+<div id='eb-back-top' onclick='window.scrollTo({top:0,behavior:&quot;smooth&quot;})'>
+  <i class='fa-solid fa-arrow-up'/>
+</div>
+
+<script type='text/javascript'>
+/*<![CDATA[*/
+// Hamburger menu
+function ebToggleMenu(){
+  var ham=document.getElementById('eb-ham');
+  var menu=document.getElementById('eb-mobile-menu');
+  ham.classList.toggle('open');
+  menu.classList.toggle('open');
+}
+// Close mobile menu on link click
+document.querySelectorAll('#eb-mobile-menu a').forEach(function(a){
+  a.addEventListener('click',function(){
+    document.getElementById('eb-ham').classList.remove('open');
+    document.getElementById('eb-mobile-menu').classList.remove('open');
+  });
+});
+// Back to top
+window.addEventListener('scroll',function(){
+  var b=document.getElementById('eb-back-top');
+  if(window.scrollY>300)b.classList.add('show');
+  else b.classList.remove('show');
+});
+// Active nav link highlight
+(function(){
+  var url=window.location.href;
+  document.querySelectorAll('#eb-navbar a, #eb-mobile-menu a').forEach(function(a){
+    if(a.href&&url.indexOf(a.href)>-1)a.classList.add('active');
+  });
+})();
+// Code block copy buttons
+document.querySelectorAll('.eb-post-body pre').forEach(function(pre){
+  var btn=document.createElement('button');
+  btn.className='eb-copy-btn';
+  btn.textContent='Copy';
+  btn.onclick=function(){
+    var code=pre.querySelector('code');
+    if(code){
+      navigator.clipboard.writeText(code.innerText).then(function(){
+        btn.textContent='Copied!';
+        setTimeout(function(){btn.textContent='Copy';},1800);
+      });
+    }
+  };
+  pre.style.position='relative';
+  pre.appendChild(btn);
+});
+/*]]>*/
+</script>
+
+</body>
+</html>
